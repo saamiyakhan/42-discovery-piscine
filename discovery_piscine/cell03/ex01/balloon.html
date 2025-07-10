@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <style>
+            #circle {
+                width: 200px; /* Example width */
+                height: 200px; /* Example height (must be the same as width) */
+                border-radius: 50%; /* Makes the div a circle */
+                background-color: red; /* Example background color */
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div onclick=Process() id="circle"></div>
+        <script>
+        document.getElementById('circle').addEventListener('click', Process);
+        function Process() {
+            var btn = document.getElementById("circle");
+            var currwidth = btn.clientWidth;
+            var currheight = btn.clientHeight;
+            var colourr = btn.style.backgroundColor
+            if (colourr === 'red'){
+                btn.style.backgroundColor = "green"
+            } else if (colourr === 'green') {
+                btn.style.backgroundColor = "blue"
+            } else {
+                btn.style.backgroundColor = "red"
+            }
+            if (currwidth > 420 || currheight > 420){
+                btn.style.width = 200 + "px"
+                btn.style.height = 200 + "px"
+            }
+            else {
+                btn.style.width = (currwidth + 10) + "px";
+                btn.style.height = (currheight + 10) + "px";
+            }
+
+            }
+
+            document.getElementById('circle').addEventListener('mouseleave', hoverr);
+            function hoverr() {
+            var btn = document.getElementById("circle");
+            var currwidth = btn.clientWidth;
+            var currheight = btn.clientHeight;
+            var colourr = btn.style.backgroundColor
+            if (colourr === 'red'){
+                btn.style.backgroundColor = "blue"
+            } else if (colourr === 'green') {
+                btn.style.backgroundColor = "red"
+            } else {
+                btn.style.backgroundColor = "green"
+            }
+            if (currwidth > 200 && currheight > 200){
+                btn.style.width = (currwidth - 5) + "px";
+                btn.style.height = (currwidth - 5) + "px";
+            }
+
+            }
+            
+            
+        </script>
+    </body>
+
+</html>
+
+

@@ -1,0 +1,37 @@
+#cat {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    overflow: hidden;
+}
+#socials {
+    width: 300px;
+    height: 100px;
+    object-fit: cover;
+    overflow: hidden;
+    background-color: transparent;
+    padding: 20px;
+}
+
+table {
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+td {
+    width: 500px;
+}
+
+#lol {
+    height: 50px;
+}
+
+button {
+    background-color: black;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: 'Franklin Gothic Medium';
+    width: 500px;
+    color: white;
+    padding: 25px;
+}

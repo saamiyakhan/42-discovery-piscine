@@ -1,0 +1,84 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <form id="myForm" action="" method="post">
+        <input type="text" name="lmember"/>
+        <select id="signs">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="text" name="rmember"/>
+        <label>=</label>
+        <p id="answer">Ans</p>
+        <input type="submit" id="buttony" value="Try me!">
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            let formHasResponse = false;
+
+            // Set up change listener to mark form as used
+            $('#myForm').on('change', function() {
+                formHasResponse = true;
+            });
+
+            // Set interval to check if form has been used every 30 seconds
+            const intervalID = setInterval(function() {
+                if (!formHasResponse) {
+                    alert("Please, use me...");
+                }
+            }, 30000);
+
+            // Handle form submit event
+            $('#myForm').on('submit', function(event) {
+                event.preventDefault(); // prevent actual form submission
+
+                clearInterval(intervalID); // stop interval on submit
+
+                const lmember = Number($('input[name="lmember"]').val());
+                const rmember = Number($('input[name="rmember"]').val());
+                const sign = $('#signs').val();
+
+                let finalans = 0;
+
+                if (Number.isInteger(lmember) && Number.isInteger(rmember) && lmember >= 0 && rmember >= 0) {
+                    switch(sign) {
+                        case '+':
+                            finalans = lmember + rmember;
+                            break;
+                        case '-':
+                            finalans = lmember - rmember;
+                            break;
+                        case '*':
+                            finalans = lmember * rmember;
+                            break;
+                        case '/':
+                            if (rmember === 0) {
+                                alert("It's over 9000!");
+                                return;
+                            }
+                            finalans = lmember / rmember;
+                            break;
+                        case '%':
+                            if (rmember === 0) {
+                                alert("It's over 9000!");
+                                return;
+                            }
+                            finalans = lmember % rmember;
+                            break;
+                    }
+                    console.log(finalans);
+                    alert(`Your final answer is ${finalans}`);
+                } else {
+                    alert('Error :(');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

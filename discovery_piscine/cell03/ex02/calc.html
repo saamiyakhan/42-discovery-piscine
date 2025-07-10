@@ -1,0 +1,92 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form label = "myForm", id="myForm" action="" method="post">
+            <input type = "text" name = "lmember"/>
+            <select id="signs">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+              </select>
+            <input type = "text" name = "rmember"/>
+            <label>=</label>
+            <p id="answer"> Ans</p>
+            <input type="submit" id="buttony" onclick=openForm() value="Try me!">
+
+
+
+        <script>
+
+            // To check at a specific instance:
+            function checkFormStatus() {
+                let formHasResponse = false;
+
+                const form = document.getElementById('myForm'); 
+
+                // Option 1: Monitor input changes
+                form.addEventListener('change', () => {
+                    formHasResponse = true;
+                });
+
+                // Option 2: Listen for form submission
+                form.addEventListener('submit', () => {
+                    formHasResponse = true;
+                });
+
+                if (!formHasResponse) {
+                    alert("Please, use me...");
+                }
+            }
+
+            const intervalID = setInterval(checkFormStatus, 30000);
+
+            function openForm() {
+                clearInterval(intervalID);
+                const signs = (document.getElementById("signs")).value;
+                const lmember = Number(document.getElementsByName("lmember")[0].value);
+                const rmember = Number(document.getElementsByName("rmember")[0].value);
+                var finalans = 0
+                if (Number.isInteger(lmember) && Number.isInteger(rmember) && lmember >= 0 && rmember >= 0){
+                    if (signs === '+'){
+                    finalans = lmember + rmember;
+                    }   
+                    if (signs === '-'){
+                        finalans = lmember - rmember;
+                    } 
+                    if (signs === '*'){
+                        finalans = lmember * rmember;
+                    }
+                    if (signs === '/'){
+                        if (rmember === 0){
+                            alert("It's over 9000!")
+                            return
+                        }
+                        finalans = lmember / rmember;
+                    }
+                    if (signs === '%'){
+                        if (rmember === 0){
+                            alert("It's over 9000!")
+                            return
+                        }
+                        finalans = lmember % rmember;
+                    }
+                    console.log('Your final answer is ' + finalans);
+                    alert(`Your final answer is ${finalans}`);
+                } else {
+                    alert('Error :(')
+                }
+                
+        } 
+
+        
+
+        </script>
+
+
+        </form>
+    </body>
+</html>
